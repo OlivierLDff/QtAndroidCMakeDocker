@@ -9,16 +9,6 @@ jobs:
   build-latest:
     name: qt-android-cmake:latest
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-      #  qt-version: ['5.12.9', '5.15.1']
-      #  api: ['24', '26', '28', '29', '30']
-      #  ndk: ['28.0.3', '30.0.2']
-        qt-version: ['5.15.1']
-        api: ['30']
-        ndk: ['30.0.2']
-
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -38,7 +28,6 @@ jobs:
         name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          build-args: qt-version=${{ matrix.qt-version }},api=${{ matrix.api }},ndk=${{ matrix.ndk }}
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/qt-android-cmake:latest
       -

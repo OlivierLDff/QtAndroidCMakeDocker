@@ -10,19 +10,19 @@ ENV ANDROID_NDK=$ANDROID_SDK_ROOT/ndk-bundle
 # - to build cmake (wget, git, ssl, build stuff)
 # - to use aqt (python3, python3-pip)
 # - ninja to use it to build with android ndk (seems recommended by google)
-RUN apt update && apt -y install software-properties-common wget build-essential autoconf git fuse libssl-dev openssl python3 python3-pip ninja-build
+RUN apt update && apt -y install software-properties-common wget build-essential autoconf git fuse libssl-dev openssl python3 python3-pip ninja-build cmake
 
 # Build cool cmake version
-ARG CMAKE=3.18.4
-RUN wget -c -nv https://github.com/Kitware/CMake/releases/download/v${CMAKE}/cmake-${CMAKE}.tar.gz && \
-    tar zxvf cmake-${CMAKE}.tar.gz   && \
-    rm -rf cmake-${CMAKE}.tar.gz     && \
-    cd cmake-${CMAKE}                && \
-    ./configure                      && \
-    make                             && \
-    make install                     && \
-    cd ..                            && \
-    rm -rf cmake-${CMAKE}
+#ARG CMAKE=3.18.4
+#RUN wget -c -nv https://github.com/Kitware/CMake/releases/download/v${CMAKE}/cmake-${CMAKE}.tar.gz && \
+#    tar zxvf cmake-${CMAKE}.tar.gz   && \
+#    rm -rf cmake-${CMAKE}.tar.gz     && \
+#    cd cmake-${CMAKE}                && \
+#    ./configure                      && \
+#    make                             && \
+#    make install                     && \
+#    cd ..                            && \
+#    rm -rf cmake-${CMAKE}
 
 # Download & Install Qt
 ARG QT_VERSION=5.15.1
