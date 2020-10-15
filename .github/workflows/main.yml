@@ -13,8 +13,8 @@ jobs:
     strategy:
       matrix:
         qt-version: ['5.12.9', '5.15.1']
-        api: ['26', '28', '29']
-        ndk: ['28.0.3']
+        api: ['26', '28', '29', '30']
+        tools: ['30.0.2']
 
     steps:
       - name: Check out the repo
@@ -35,9 +35,9 @@ jobs:
         name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          build-args: qt-version=${{ matrix.qt-version }},api=${{ matrix.api }},ndk=${{ matrix.ndk }}
+          build-args: QT_VERSION=${{ matrix.qt-version }},ANDROID_API_LEVEL=${{ matrix.api }},ANDROID_TOOLS_LEVEL=${{ matrix.tools }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/qt-android-cmake:qt${{ matrix.qt-version }}-api${{ matrix.api }}-ndk${{ matrix.ndk }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/qt-android-cmake:qt${{ matrix.qt-version }}-api${{ matrix.api }}-tools${{ matrix.tools }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

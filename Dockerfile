@@ -49,8 +49,8 @@ RUN rm -rf ${Qt5_DIR}/qml/QtQuick/Controls.2/designer  && \
     rm -rf ${Qt5_DIR}/qml/QtQuick/Controls.2/Universal
 
 ARG ANDROID_API_LEVEL=30
-ARG ANDROID_NDK_LEVEL=30.0.2
+ARG ANDROID_TOOLS_LEVEL=30.0.2
 
-RUN sdkmanager "platforms;android-${ANDROID_API_LEVEL}" "build-tools;${ANDROID_NDK_LEVEL}"
+RUN sdkmanager "platforms;android-${ANDROID_API_LEVEL}" "build-tools;${ANDROID_TOOLS_LEVEL}"
 
 WORKDIR /src
