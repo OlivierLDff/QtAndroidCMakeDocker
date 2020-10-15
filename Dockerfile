@@ -19,7 +19,7 @@ RUN wget -c -nv https://github.com/Kitware/CMake/releases/download/v${CMAKE}/cma
     rm -rf cmake-${CMAKE}.tar.gz     && \
     cd cmake-${CMAKE}                && \
     ./configure                      && \
-    make -j 2                        && \
+    make                             && \
     make install                     && \
     cd ..                            && \
     rm -rf cmake-${CMAKE}
