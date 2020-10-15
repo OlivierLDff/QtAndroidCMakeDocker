@@ -47,7 +47,7 @@ jobs:
 
   build-variant:
     name: qt-android-cmake
-    needs: setup
+    needs: build-latest
     runs-on: ubuntu-latest
 
     strategy:
