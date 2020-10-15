@@ -40,7 +40,7 @@ jobs:
         with:
           build-args: qt-version=${{ matrix.qt-version }},api=${{ matrix.api }},ndk=${{ matrix.ndk }}
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/qt-android-cmake:qt${{ matrix.qt-version }}-api${{ matrix.api }}-ndk${{ matrix.ndk }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/qt-android-cmake:qt${{ matrix.qt-version }}-api${{ matrix.api }}-ndk${{ matrix.ndk }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
